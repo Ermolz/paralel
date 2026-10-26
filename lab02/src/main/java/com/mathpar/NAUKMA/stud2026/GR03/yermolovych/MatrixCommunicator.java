@@ -1,0 +1,94 @@
+package com.mathpar.NAUKMA.stud2026.GR03.yermolovych;
+
+import mpi.CartComm;
+import mpi.Group;
+import mpi.Intracomm;
+import mpi.MPI;
+import mpi.MPIException;
+import mpi.ShiftParms;
+
+public class MatrixCommunicator {
+    public static void main(String[] args) throws MPIException {
+        MPI.Init(args);
+        try {
+            int worldRank = MPI.COMM_WORLD.getRank();
+            int worldSize = MPI.COMM_WORLD.getSize();
+            int rows = 3;
+            int columns = 5;
+            int requiredSize = rows * columns;
+            if (worldSize < requiredSize) {
+                if (worldRank == 0) {
+                    System.err.println("At least " + requiredSize
+                            + " MPI processes are required; available: " + worldSize + ".");
+                }
+                return;
+            }
+
+            Group worldGroup = MPI.COMM_WORLD.getGroup();
+            int[] matrixRanks = new int[requiredSize];
+            for (int i = 0; i < requiredSize; i++) {
+                matrixRanks[i] = i;
+            }
+            Group matrixGroup = worldGroup.incl(matrixRanks);
+            Intracomm baseMatrixComm = MPI.COMM_WORLD.createGroup(matrixGroup, 0);
+
+            if (!baseMatrixComm.isNull()) {
+                CartComm matrix = baseMatrixComm.createCart(
+                        new int[]{rows, columns}, new boolean[]{false, false}, true);
+                int matrixRank = matrix.getRank();
+                int[] coordinates = matrix.getCoords(matrixRank);
+                ShiftParms vertical = matrix.shift(0, 1);
+                ShiftParms horizontal = matrix.shift(1, 1);
+
+                if (worldRank == 0) {
+                    System.out.println("MATRIX COMMUNICATOR | world_size=" + worldSize
+                            + " | members=0..14 | grid=3x5 | periodic=false | reorder=true");
+                }
+                System.out.println(String.format(
+                        "world_rank=%d, matrix_rank=%d, coords=(%d,%d), up=%s, down=%s, left=%s, right=%s",
+                        worldRank, matrixRank, coordinates[0], coordinates[1],
+                        neighbor(vertical.getRankSource()), neighbor(vertical.getRankDest()),
+                        neighbor(horizontal.getRankSource()), neighbor(horizontal.getRankDest())));
+
+                matrix.free();
+                baseMatrixComm.free();
+            } else {
+                System.out.println("world_rank=" + worldRank + " -> excluded from matrix 3x5");
+            }
+            matrixGroup.free();
+            worldGroup.free();
+        } finally {
+            MPI.Finalize();
+        }
+    }
+
+    private static String neighbor(int rank) {
+        return rank == MPI.PROC_NULL ? "none" : Integer.toString(rank);
+    }
+}
+
+/*
+Run:
+cd ~/paralel
+source scripts/env.sh
+mvn -q -o -Dlab.directory=lab02 compile
+mpirun --oversubscribe --bind-to none --timeout 60 -np 16 java -cp lab02/target/classes:lib/mpi.jar com.mathpar.NAUKMA.stud2026.GR03.yermolovych.MatrixCommunicator
+Terminal output:
+world_rank=15 -> excluded from matrix 3x5
+MATRIX COMMUNICATOR | world_size=16 | members=0..14 | grid=3x5 | periodic=false | reorder=true
+world_rank=8, matrix_rank=8, coords=(1,3), up=3, down=13, left=7, right=9
+world_rank=12, matrix_rank=12, coords=(2,2), up=7, down=none, left=11, right=13
+world_rank=11, matrix_rank=11, coords=(2,1), up=6, down=none, left=10, right=12
+world_rank=14, matrix_rank=14, coords=(2,4), up=9, down=none, left=13, right=none
+world_rank=4, matrix_rank=4, coords=(0,4), up=none, down=9, left=3, right=none
+world_rank=5, matrix_rank=5, coords=(1,0), up=0, down=10, left=none, right=6
+world_rank=9, matrix_rank=9, coords=(1,4), up=4, down=14, left=8, right=none
+world_rank=10, matrix_rank=10, coords=(2,0), up=5, down=none, left=none, right=11
+world_rank=13, matrix_rank=13, coords=(2,3), up=8, down=none, left=12, right=14
+world_rank=7, matrix_rank=7, coords=(1,2), up=2, down=12, left=6, right=8
+world_rank=6, matrix_rank=6, coords=(1,1), up=1, down=11, left=5, right=7
+world_rank=1, matrix_rank=1, coords=(0,1), up=none, down=6, left=0, right=2
+world_rank=3, matrix_rank=3, coords=(0,3), up=none, down=8, left=2, right=4
+world_rank=2, matrix_rank=2, coords=(0,2), up=none, down=7, left=1, right=3
+world_rank=0, matrix_rank=0, coords=(0,0), up=none, down=5, left=none, right=1
+*/

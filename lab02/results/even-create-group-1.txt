@@ -1,0 +1,2 @@
+EVEN COMMUNICATOR | world_size=1 | members=[0]
+world_rank=0 -> even_rank=0, even_size=1

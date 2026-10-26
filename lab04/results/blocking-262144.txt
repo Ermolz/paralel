@@ -1,0 +1,2 @@
+mode=blocking, rank=0, role=sent, count=262144, first=0, last=262143, checksum=34359607296, elapsed_ms=0.954
+mode=blocking, rank=1, role=received, count=262144, first=0, last=262143, checksum=34359607296, elapsed_ms=1.066

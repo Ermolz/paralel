@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+set -euo pipefail
+lab_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+project_dir="$(cd -- "$lab_dir/.." && pwd)"
+source "$project_dir/scripts/env.sh"
+action="${1:-all}"
+processes="${2:-}"
+
+case "$action" in
+    all|bcast|gather|gatherv|scatter|scatterv|allgather|allgatherv|alltoall|alltoallv|build) ;;
+    *) echo 'Usage: ./lab lab05 [all|bcast|gather|gatherv|scatter|scatterv|allgather|allgatherv|alltoall|alltoallv|build] [processes]' >&2; exit 2 ;;
+esac
+if [[ -n "$processes" ]]; then
+    if [[ ! "$processes" =~ ^[1-9][0-9]{0,3}$ ]] || (( processes > 1024 )); then
+        echo 'Process count must be an integer from 1 to 1024.' >&2
+        exit 2
+    fi
+fi
+
+mvn -q -o -f "$project_dir/pom.xml" -Dlab.directory=lab05 compile
+if [[ "$action" == build ]]; then
+    exit 0
+fi
+
+run_program() {
+    local count="${processes:-$2}"
+    printf '\n%s (%s processes)\n' "$1" "$count"
+    mpirun --oversubscribe --bind-to none --timeout 60 -np "$count" \
+        java -cp "$lab_dir/target/classes:$project_dir/lib/mpi.jar" \
+        "com.mathpar.NAUKMA.stud2026.GR03.yermolovych.$1"
+}
+
+case "$action" in
+    bcast) run_program TestBcast 4 ;;
+    gather) run_program TestGather 4 ;;
+    gatherv) run_program TestGatherv 2 ;;
+    scatter) run_program TestScatter 2 ;;
+    scatterv) run_program TestScatterv 4 ;;
+    allgather) run_program TestAllGather 4 ;;
+    allgatherv) run_program TestAllGatherv 2 ;;
+    alltoall) run_program TestAllToAll 4 ;;
+    alltoallv) run_program TestAllToAllv 4 ;;
+    all)
+        run_program TestBcast 4
+        run_program TestGather 4
+        run_program TestGatherv 2
+        run_program TestScatter 2
+        run_program TestScatterv 4
+        run_program TestAllGather 4
+        run_program TestAllGatherv 2
+        run_program TestAllToAll 4
+        run_program TestAllToAllv 4
+        ;;
+esac

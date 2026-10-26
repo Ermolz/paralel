@@ -1,0 +1,17 @@
+Exception in thread "main" Exception in thread "main" Exception in thread "main" java.lang.IllegalArgumentException: Run with exactly 2 MPI processes.
+	at com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestBlockingAndNonblocking.main(TestBlockingAndNonblocking.java:16)
+java.lang.IllegalArgumentException: Run with exactly 2 MPI processes.
+java.lang.IllegalArgumentException: Run with exactly 2 MPI processes.
+	at com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestBlockingAndNonblocking.main(TestBlockingAndNonblocking.java:16)
+	at com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestBlockingAndNonblocking.main(TestBlockingAndNonblocking.java:16)
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[54895,1],0]
+  Exit code:    1
+--------------------------------------------------------------------------

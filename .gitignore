@@ -1,0 +1,55 @@
+# Local instructions and agent state
+AGENTS.md
+.agents/
+.codex/
+
+# Build output
+target/
+build/
+out/
+*.class
+*.jar
+!/lib/**/*.jar
+
+# Local logs, temporary files and editor settings
+logs/
+tmp/
+.idea/
+.vscode/
+*.iml
+__pycache__/
+*.py[cod]
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local reference materials and submission archives
+*.pdf
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
+*.tgz
+!/lib/mathpar/mathpar-core-9.0-local-sources.zip
+
+# Generated previews; measured text results remain versioned
+/lab01/results/report.html
+/lab01/results/summary.html
+/lab01/results/report.png
+
+# Credentials
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*

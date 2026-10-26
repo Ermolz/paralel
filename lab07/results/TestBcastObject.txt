@@ -1,0 +1,4 @@
+rank=0, object=Student[surname=yermolovych, group=GR03, year=2026]
+rank=3, object=Student[surname=yermolovych, group=GR03, year=2026]
+rank=2, object=Student[surname=yermolovych, group=GR03, year=2026]
+rank=1, object=Student[surname=yermolovych, group=GR03, year=2026]

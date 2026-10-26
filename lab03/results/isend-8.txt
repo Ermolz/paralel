@@ -1,0 +1,8 @@
+mode=iSend/recv, rank=0, size=8, role=source, data=[9, 0, 7, 0, 9]
+mode=iSend/recv, rank=1, size=8, role=receiver, data=[9, 0, 7, 0, 9]
+mode=iSend/recv, rank=2, size=8, role=receiver, data=[9, 0, 7, 0, 9]
+mode=iSend/recv, rank=7, size=8, role=receiver, data=[9, 0, 7, 0, 9]
+mode=iSend/recv, rank=3, size=8, role=receiver, data=[9, 0, 7, 0, 9]
+mode=iSend/recv, rank=4, size=8, role=receiver, data=[9, 0, 7, 0, 9]
+mode=iSend/recv, rank=6, size=8, role=receiver, data=[9, 0, 7, 0, 9]
+mode=iSend/recv, rank=5, size=8, role=receiver, data=[9, 0, 7, 0, 9]

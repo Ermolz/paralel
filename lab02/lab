@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+set -euo pipefail
+lab_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+project_dir="$(cd -- "$lab_dir/.." && pwd)"
+source "$project_dir/scripts/env.sh"
+action="${1:-all}"
+processes="${2:-}"
+
+case "$action" in
+    all|even|matrix|build) ;;
+    *) echo 'Usage: ./lab lab02 [all|even|matrix|build] [processes]' >&2; exit 2 ;;
+esac
+if (( $# > 2 )); then
+    echo 'Usage: ./lab lab02 [all|even|matrix|build] [processes]' >&2
+    exit 2
+fi
+if [[ -n "$processes" ]] && { [[ ! "$processes" =~ ^[1-9][0-9]{0,3}$ ]] || (( processes > 1024 )); }; then
+    echo 'Process count must be an integer from 1 to 1024.' >&2
+    exit 2
+fi
+
+mvn -q -o -f "$project_dir/pom.xml" -Dlab.directory=lab02 compile
+if [[ "$action" == build ]]; then
+    exit 0
+fi
+
+run_program() {
+    local count="${processes:-$2}"
+    mpirun --oversubscribe --bind-to none --timeout 60 -np "$count" \
+        java -cp "$lab_dir/target/classes:$project_dir/lib/mpi.jar" \
+        "com.mathpar.NAUKMA.stud2026.GR03.yermolovych.$1"
+}
+
+case "$action" in
+    even) run_program EvenRanksCommunicator 8 ;;
+    matrix) run_program MatrixCommunicator 16 ;;
+    all)
+        run_program EvenRanksCommunicator 8
+        run_program MatrixCommunicator 16
+        ;;
+esac

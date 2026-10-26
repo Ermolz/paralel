@@ -1,0 +1,8 @@
+rank=1, send=[10, 11]
+rank=2, send=[20, 21]
+rank=3, send=[30, 31]
+rank=0, send=[0, 1]
+rank=1, received=[0, 1, 10, 11, 20, 21, 30, 31]
+rank=2, received=[0, 1, 10, 11, 20, 21, 30, 31]
+rank=0, received=[0, 1, 10, 11, 20, 21, 30, 31]
+rank=3, received=[0, 1, 10, 11, 20, 21, 30, 31]

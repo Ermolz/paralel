@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -euo pipefail
+lab_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+project_dir="$(cd -- "$lab_dir/.." && pwd)"
+source "$project_dir/scripts/env.sh"
+action="${1:-all}"
+processes="${2:-8}"
+
+case "$action" in
+    all|send|isend|irecv|build) ;;
+    *) echo 'Usage: ./lab lab03 [all|send|isend|irecv|build] [processes]' >&2; exit 2 ;;
+esac
+if [[ ! "$processes" =~ ^[1-9][0-9]{0,3}$ ]] || (( processes > 1024 )); then
+    echo 'Process count must be an integer from 1 to 1024.' >&2
+    exit 2
+fi
+
+mvn -q -o -f "$project_dir/pom.xml" -Dlab.directory=lab03 compile
+if [[ "$action" == build ]]; then
+    exit 0
+fi
+
+run_program() {
+    mpirun --oversubscribe --bind-to none --timeout 60 -np "$processes" \
+        java -cp "$lab_dir/target/classes:$project_dir/lib/mpi.jar" \
+        "com.mathpar.NAUKMA.stud2026.GR03.yermolovych.$1"
+}
+
+case "$action" in
+    send) run_program TestSendAndRecv ;;
+    isend) run_program TestISendAndRecv ;;
+    irecv) run_program TestISendAndIRecv ;;
+    all)
+        run_program TestSendAndRecv
+        run_program TestISendAndRecv
+        run_program TestISendAndIRecv
+        ;;
+esac

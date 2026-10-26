@@ -1,0 +1,14 @@
+Verified: 2026-09-22T16:32:21+03:00
+PASS: send/recv, 1 process(es): ranks 0..0, communicator size, roles, and all 5 array elements verified; exit code 0.
+PASS: send/recv, 2 process(es): ranks 0..1, communicator size, roles, and all 5 array elements verified; exit code 0.
+PASS: send/recv, 4 process(es): ranks 0..3, communicator size, roles, and all 5 array elements verified; exit code 0.
+PASS: send/recv, 8 process(es): ranks 0..7, communicator size, roles, and all 5 array elements verified; exit code 0.
+PASS: iSend/recv, 1 process(es): ranks 0..0, communicator size, roles, and all 5 array elements verified; exit code 0.
+PASS: iSend/recv, 2 process(es): ranks 0..1, communicator size, roles, and all 5 array elements verified; exit code 0.
+PASS: iSend/recv, 4 process(es): ranks 0..3, communicator size, roles, and all 5 array elements verified; exit code 0.
+PASS: iSend/recv, 8 process(es): ranks 0..7, communicator size, roles, and all 5 array elements verified; exit code 0.
+PASS: iSend/iRecv, 1 process(es): ranks 0..0, communicator size, roles, and all 5 array elements verified; exit code 0.
+PASS: iSend/iRecv, 2 process(es): ranks 0..1, communicator size, roles, and all 5 array elements verified; exit code 0.
+PASS: iSend/iRecv, 4 process(es): ranks 0..3, communicator size, roles, and all 5 array elements verified; exit code 0.
+PASS: iSend/iRecv, 8 process(es): ranks 0..7, communicator size, roles, and all 5 array elements verified; exit code 0.
+PASS: blocking and nonblocking integer receives produced identical arrays.

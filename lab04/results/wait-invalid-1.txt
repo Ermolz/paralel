@@ -1,0 +1,13 @@
+Exception in thread "main" java.lang.IllegalArgumentException: Run with at least 2 MPI processes.
+	at com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestWaitFor.main(TestWaitFor.java:14)
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[54993,1],0]
+  Exit code:    1
+--------------------------------------------------------------------------

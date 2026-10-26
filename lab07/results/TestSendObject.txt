@@ -1,0 +1,4 @@
+rank=0, send=Student[surname=yermolovych, group=GR03, year=2026]
+rank=3, received=Student[surname=yermolovych, group=GR03, year=2026]
+rank=1, received=Student[surname=yermolovych, group=GR03, year=2026]
+rank=2, received=Student[surname=yermolovych, group=GR03, year=2026]

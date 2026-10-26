@@ -1,0 +1,26 @@
+Laboratory 11: comparison of laboratories 9 and 10
+Experiment: accuracy
+Processes: 64; grid: 8 x 8
+A: 2048 x 2048; [A | B]: 2048 x 2049
+N = 2048; k = 256; seed = 2026
+Row communicators: 8; column communicators: 8
+Block: 256 x 256; last block column: 256 x 257
+Measured runs: 1; warm-up runs per method: 0
+DIAGONAL: 512/2048 pivot steps completed
+DIAGONAL: 1024/2048 pivot steps completed
+DIAGONAL: 1536/2048 pivot steps completed
+DIAGONAL: 2048/2048 pivot steps completed
+Method: DIAGONAL
+Error = max(abs(A * X - B)) = 8.255898528375e-06
+ALL_GATHER: 512/2048 pivot steps completed
+ALL_GATHER: 1024/2048 pivot steps completed
+ALL_GATHER: 1536/2048 pivot steps completed
+ALL_GATHER: 2048/2048 pivot steps completed
+Method: ALL_GATHER
+Error = max(abs(A * X - B)) = 1.738058585943e-10
+ROW_COLUMN: 512/2048 pivot steps completed
+ROW_COLUMN: 1024/2048 pivot steps completed
+ROW_COLUMN: 1536/2048 pivot steps completed
+ROW_COLUMN: 2048/2048 pivot steps completed
+Method: ROW_COLUMN
+Error = max(abs(A * X - B)) = 1.738058585943e-10

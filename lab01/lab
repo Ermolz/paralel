@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+set -euo pipefail
+project_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+cd -- "$project_dir"
+action="${1:-report}"
+if [[ "$action" =~ ^[0-9]+$ ]]; then
+    exec bash scripts/run.sh "$action"
+fi
+case "$action" in
+    run) exec bash scripts/run.sh "${2:-7}" student ;;
+    example) exec bash scripts/run.sh "${2:-7}" example ;;
+    build) exec bash scripts/build.sh ;;
+    verify) exec bash scripts/verify.sh ;;
+    results) exec python3 scripts/report.py --short ;;
+    report)
+        bash scripts/build.sh >/dev/null
+        exec python3 scripts/report.py
+        ;;
+    all)
+        bash scripts/build.sh
+        python3 scripts/research.py
+        exec python3 scripts/report.py
+        ;;
+    research)
+        bash scripts/build.sh
+        shift
+        exec python3 scripts/research.py "$@"
+        ;;
+    slots)
+        value="${2:-}"
+        [[ "$value" =~ ^[1-9][0-9]{0,3}$ ]] && (( value <= 1024 )) || {
+            echo 'Usage: ./lab slots N, where N is 1..1024.' >&2; exit 2;
+        }
+        printf 'localhost slots=%s\n' "$value" > "$project_dir/../hostfile"
+        cat "$project_dir/../hostfile"
+        ;;
+    *)
+        printf '%s\n' \
+            './lab 7             Run your HelloWorld on 7 processes' \
+            './lab example 7     Run the course example' \
+            './lab slots 32      Set localhost slots in hostfile' \
+            './lab 32            Run on 32 processes' \
+            './lab research      Research 16..1024 and refine the boundary' \
+            './lab report        Show assignment, CPU details and saved research' \
+            './lab results       Show saved research in one short table' \
+            './lab all           Repeat research and show the complete report' \
+            './lab verify        Verify runs on 1 and 7 processes' \
+            './lab build         Compile Java sources'
+        ;;
+esac

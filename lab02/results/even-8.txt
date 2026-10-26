@@ -1,0 +1,9 @@
+world_rank=1 -> excluded
+world_rank=3 -> excluded
+world_rank=5 -> excluded
+world_rank=7 -> excluded
+EVEN COMMUNICATOR | world_size=8 | members=[0, 2, 4, 6]
+world_rank=4 -> even_rank=2, even_size=4
+world_rank=2 -> even_rank=1, even_size=4
+world_rank=6 -> even_rank=3, even_size=4
+world_rank=0 -> even_rank=0, even_size=4

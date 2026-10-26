@@ -1,0 +1,8 @@
+PASS: even, 1 process(es): even members, local ranks, group size and excluded odd ranks verified.
+PASS: even, 2 process(es): even members, local ranks, group size and excluded odd ranks verified.
+PASS: even, 7 process(es): even members, local ranks, group size and excluded odd ranks verified.
+PASS: even, 8 process(es): even members, local ranks, group size and excluded odd ranks verified.
+PASS: matrix, 1 process(es): 1x1 coordinates, all neighbors and non-periodic boundaries verified.
+PASS: matrix, 4 process(es): 2x2 coordinates, all neighbors and non-periodic boundaries verified.
+PASS: matrix, 6 process(es): 3x2 coordinates, all neighbors and non-periodic boundaries verified.
+PASS: matrix, 9 process(es): 3x3 coordinates, all neighbors and non-periodic boundaries verified.

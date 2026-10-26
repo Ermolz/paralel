@@ -1,0 +1,4 @@
+rank=0, objects=[yermolovych, GR03, 2026, [10, 20, 30]]
+rank=1, objects=[yermolovych, GR03, 2026, [10, 20, 30]]
+rank=3, objects=[yermolovych, GR03, 2026, [10, 20, 30]]
+rank=2, objects=[yermolovych, GR03, 2026, [10, 20, 30]]

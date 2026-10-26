@@ -1,0 +1,72 @@
+Gauss-Jordan elimination: diagonal and full pivoting
+Processes: 4; grid: 2 x 2
+N = 512; k = 256; seed = 2026
+Row communicators: 2, size: 2
+Column communicators: 2, size: 2
+Block: 256 x 256; last block column: 256 x 257
+Measured runs: 5; warm-up runs per method: 1
+
+Method: DIAGONAL; run: 1
+Error = max(abs(P[i])) = 1.474639077514e-09
+Solve time (s): 0.212141
+
+Method: ALL_GATHER; run: 1
+Error = max(abs(P[i])) = 2.948752353404e-12
+Solve time (s): 0.253984
+
+Method: ROW_COLUMN; run: 1
+Error = max(abs(P[i])) = 2.948752353404e-12
+Solve time (s): 0.255064
+
+Method: ALL_GATHER; run: 2
+Error = max(abs(P[i])) = 2.948752353404e-12
+Solve time (s): 0.255099
+
+Method: ROW_COLUMN; run: 2
+Error = max(abs(P[i])) = 2.948752353404e-12
+Solve time (s): 0.238762
+
+Method: DIAGONAL; run: 2
+Error = max(abs(P[i])) = 1.474639077514e-09
+Solve time (s): 0.101279
+
+Method: ROW_COLUMN; run: 3
+Error = max(abs(P[i])) = 2.948752353404e-12
+Solve time (s): 0.185883
+
+Method: DIAGONAL; run: 3
+Error = max(abs(P[i])) = 1.474639077514e-09
+Solve time (s): 0.105246
+
+Method: ALL_GATHER; run: 3
+Error = max(abs(P[i])) = 2.948752353404e-12
+Solve time (s): 0.196461
+
+Method: DIAGONAL; run: 4
+Error = max(abs(P[i])) = 1.474639077514e-09
+Solve time (s): 0.060296
+
+Method: ALL_GATHER; run: 4
+Error = max(abs(P[i])) = 2.948752353404e-12
+Solve time (s): 0.192133
+
+Method: ROW_COLUMN; run: 4
+Error = max(abs(P[i])) = 2.948752353404e-12
+Solve time (s): 0.145171
+
+Method: ALL_GATHER; run: 5
+Error = max(abs(P[i])) = 2.948752353404e-12
+Solve time (s): 0.104186
+
+Method: ROW_COLUMN; run: 5
+Error = max(abs(P[i])) = 2.948752353404e-12
+Solve time (s): 0.277689
+
+Method: DIAGONAL; run: 5
+Error = max(abs(P[i])) = 1.474639077514e-09
+Solve time (s): 0.054277
+
+Median solve time (s):
+DIAGONAL: 0.101279
+ALL_GATHER: 0.196461
+ROW_COLUMN: 0.238762

@@ -1,0 +1,13 @@
+[0.003s][warning][perf,memops] Cannot use file /tmp/hsperfdata_ermolz/8890 because it is locked by another process (errno = 11)
+Gauss-Jordan elimination without pivoting
+Processes: 4; grid: 2 x 2
+N = 2; k = 1; seed = 2026
+Row communicators: 2, size: 2
+Column communicators: 2, size: 2
+Block: 1 x 1; last block column: 1 x 2
+[A | B]:
+[62.24464536586909, 85.07172476822235, 79.24801280620758]
+[53.43092699965216, 84.32501938128095, 15.68130504283984]
+X = [7.604726136391218, -4.632625819351362]
+P = A * X - B = [-2.842170943040401E-14, -1.5987211554602254E-14]
+Error = max(abs(P[i])) = 2.842170943040e-14

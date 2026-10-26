@@ -1,0 +1,4 @@
+rank=0, send=[yermolovych, GR03, 2026, [10, 20, 30]]
+rank=3, received=[yermolovych, GR03, 2026, [10, 20, 30]]
+rank=1, received=[yermolovych, GR03, 2026, [10, 20, 30]]
+rank=2, received=[yermolovych, GR03, 2026, [10, 20, 30]]

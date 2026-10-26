@@ -1,0 +1,3 @@
+mode=iProbe, rank=1, before_send_available=false
+mode=iProbe, rank=1, source=0, tag=1, count=5, data=[10, 20, 30, 40, 50]
+mode=iProbe, rank=0, sent_to=1, data=[10, 20, 30, 40, 50]

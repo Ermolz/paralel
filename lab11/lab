@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+set -euo pipefail
+lab_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+project_dir="$(cd -- "$lab_dir/.." && pwd)"
+source "$project_dir/scripts/env.sh"
+action="${1:-results}"
+if (( $# > 1 )); then
+    echo 'Usage: ./lab lab11 [results|accuracy|time|demo|build]' >&2
+    exit 2
+fi
+case "$action" in
+    results)
+        cat "$lab_dir/results/accuracy-64-N2048.txt" "$lab_dir/results/time-4-N2048.txt"
+        exit 0
+        ;;
+    accuracy|time|demo|build) ;;
+    *) echo 'Usage: ./lab lab11 [results|accuracy|time|demo|build]' >&2; exit 2 ;;
+esac
+mvn -q -o -f "$project_dir/pom.xml" -Dlab.directory=lab11 compile
+if [[ "$action" == build ]]; then
+    exit 0
+fi
+java_options=(-Xms64m -Xmx256m -XX:ActiveProcessorCount=1 -XX:+UseSerialGC -XX:-UsePerfData)
+class_path="$lab_dir/target/classes:$project_dir/lib/mpi.jar"
+class_name=com.mathpar.NAUKMA.stud2026.GR03.yermolovych.GaussJordanComparison
+case "$action" in
+    accuracy)
+        mpirun --oversubscribe --bind-to none --mca mpi_yield_when_idle 1 --timeout 1800 -np 64 \
+            java "${java_options[@]}" -cp "$class_path" "$class_name" accuracy 2048 2026 1
+        ;;
+    time)
+        mpirun --nooversubscribe --bind-to core --map-by core --timeout 1800 -np 4 \
+            java "${java_options[@]}" -cp "$class_path" "$class_name" time 2048 2026 5
+        ;;
+    demo)
+        mpirun --nooversubscribe --bind-to core --map-by core --timeout 60 -np 4 \
+            java "${java_options[@]}" -cp "$class_path" "$class_name" demo 4 2026 1
+        ;;
+esac

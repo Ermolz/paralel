@@ -1,0 +1,5 @@
+MATRIX COMMUNICATOR | grid=2x2 | periodic=false | reorder=false
+world_rank=3, matrix_rank=3, coords=(1,1), up=1, down=none, left=2, right=none
+world_rank=2, matrix_rank=2, coords=(1,0), up=0, down=none, left=none, right=3
+world_rank=1, matrix_rank=1, coords=(0,1), up=none, down=3, left=0, right=none
+world_rank=0, matrix_rank=0, coords=(0,0), up=none, down=2, left=none, right=1

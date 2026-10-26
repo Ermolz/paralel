@@ -1,0 +1,8 @@
+mode=iSend/iRecv, rank=7, size=8, role=receiver, data=[9, 0, 7, 0, 9]
+mode=iSend/iRecv, rank=0, size=8, role=source, data=[9, 0, 7, 0, 9]
+mode=iSend/iRecv, rank=3, size=8, role=receiver, data=[9, 0, 7, 0, 9]
+mode=iSend/iRecv, rank=5, size=8, role=receiver, data=[9, 0, 7, 0, 9]
+mode=iSend/iRecv, rank=1, size=8, role=receiver, data=[9, 0, 7, 0, 9]
+mode=iSend/iRecv, rank=2, size=8, role=receiver, data=[9, 0, 7, 0, 9]
+mode=iSend/iRecv, rank=4, size=8, role=receiver, data=[9, 0, 7, 0, 9]
+mode=iSend/iRecv, rank=6, size=8, role=receiver, data=[9, 0, 7, 0, 9]

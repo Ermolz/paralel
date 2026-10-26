@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+set -euo pipefail
+lab_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+project_dir="$(cd -- "$lab_dir/.." && pwd)"
+source "$project_dir/scripts/env.sh"
+action="${1:-all}"
+processes="${2:-}"
+
+case "$action" in
+    all|mat4|mat8|matvec|scale|build) ;;
+    *) echo 'Usage: ./lab lab08 [all|mat4|mat8|matvec|scale|build] [processes for matvec or scale]' >&2; exit 2 ;;
+esac
+if (( $# > 2 )); then
+    echo 'Too many arguments.' >&2
+    exit 2
+fi
+if [[ -n "$processes" ]]; then
+    if [[ "$action" != matvec && "$action" != scale ]]; then
+        echo 'A process count can be set only for matvec or scale.' >&2
+        exit 2
+    fi
+    if [[ ! "$processes" =~ ^[1-9][0-9]?$ ]] || (( processes > 16 )); then
+        echo 'Process count must be an integer from 1 to 16.' >&2
+        exit 2
+    fi
+    if [[ "$action" == scale ]] && (( processes > 8 )); then
+        echo 'Vector scaling supports from 1 to 8 processes.' >&2
+        exit 2
+    fi
+fi
+
+mvn -q -o -f "$project_dir/pom.xml" -Dlab.directory=lab08 compile
+if [[ "$action" == build ]]; then
+    exit 0
+fi
+
+run_program() {
+    local count="${processes:-$2}"
+    printf '\n%s (%s processes)\n' "$1" "$count"
+    mpirun --oversubscribe --bind-to none --timeout 60 -np "$count" \
+        java -cp "$lab_dir/target/classes:$project_dir/lib/mpi.jar:$project_dir/lib/mathpar/*" \
+        "com.mathpar.NAUKMA.stud2026.GR03.yermolovych.$1"
+}
+
+case "$action" in
+    mat4) run_program MatrixMul4 4 ;;
+    mat8) run_program MatrixMul8 8 ;;
+    matvec) run_program MultiplyMatrixToVector 4 ;;
+    scale) run_program MultiplyVectorToScalar 4 ;;
+    all)
+        run_program MatrixMul4 4
+        run_program MatrixMul8 8
+        run_program MultiplyMatrixToVector 4
+        run_program MultiplyVectorToScalar 4
+        ;;
+esac

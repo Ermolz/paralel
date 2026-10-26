@@ -1,0 +1,7 @@
+B = [-3, -2, -1, 0, 1, 2, 3, 4]
+S = 5
+rank=0, offset=0, result=[-15, -10]
+B * S = [-15, -10, -5, 0, 5, 10, 15, 20]
+rank=1, offset=2, result=[-5, 0]
+rank=3, offset=6, result=[15, 20]
+rank=2, offset=4, result=[5, 10]

@@ -1,0 +1,24 @@
+mode=probe, rank=0, sent_to=3, data=[10, 20, 30, 40, 50]
+mode=probe, rank=2, source=0, tag=1, count=5, data=[10, 20, 30, 40, 50]
+mode=probe, rank=3, source=0, tag=1, count=5, data=[10, 20, 30, 40, 50]
+mode=probe, rank=1, source=0, tag=1, count=5, data=[10, 20, 30, 40, 50]
+mode=iProbe, rank=1, before_send_available=false
+mode=iProbe, rank=2, before_send_available=false
+mode=iProbe, rank=3, before_send_available=false
+mode=iProbe, rank=3, source=0, tag=1, count=5, data=[10, 20, 30, 40, 50]
+mode=iProbe, rank=2, source=0, tag=1, count=5, data=[10, 20, 30, 40, 50]
+mode=iProbe, rank=1, source=0, tag=1, count=5, data=[10, 20, 30, 40, 50]
+mode=iProbe, rank=0, sent_to=3, data=[10, 20, 30, 40, 50]
+mode=waitFor, rank=0, sent=42, completed=true
+mode=waitFor, rank=1, received=42, completed=true
+world_rank=0, group=A, local_rank=0, group_size=3, data=[0, 1, 2, 3, 4]
+world_rank=4, group=B, local_rank=1, group_size=2, data=[30, 31, 32, 33, 34]
+world_rank=2, group=A, local_rank=2, group_size=3, data=[0, 1, 2, 3, 4]
+world_rank=1, group=A, local_rank=1, group_size=3, data=[0, 1, 2, 3, 4]
+world_rank=3, group=B, local_rank=0, group_size=2, data=[30, 31, 32, 33, 34]
+mode=blocking, rank=1, role=received, count=5, first=0, last=4, checksum=10, elapsed_ms=0.064
+mode=blocking, rank=0, role=sent, count=5, first=0, last=4, checksum=10, elapsed_ms=0.058
+mode=delayed, rank=0, role=sent, count=5, first=0, last=4, checksum=10, elapsed_ms=0.048
+mode=delayed, rank=1, role=received, count=5, first=0, last=4, checksum=10, elapsed_ms=300.444
+mode=nonblocking, rank=0, role=received, count=5, first=1000, last=1004, checksum=5010, elapsed_ms=0.073
+mode=nonblocking, rank=1, role=received, count=5, first=0, last=4, checksum=10, elapsed_ms=0.069

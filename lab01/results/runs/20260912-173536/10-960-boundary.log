@@ -1,0 +1,2 @@
+[warn] Epoll MOD(1) on fd 2094 failed.  Old events were 6; read change was 0 (none); write change was 2 (del): Bad file descriptor
+[warn] Epoll MOD(4) on fd 2094 failed.  Old events were 6; read change was 2 (del); write change was 0 (none): Bad file descriptor

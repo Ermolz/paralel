@@ -1,0 +1,5 @@
+world_rank=4, group=B, local_rank=1, group_size=2, data=[30, 31, 32, 33, 34]
+world_rank=0, group=A, local_rank=0, group_size=3, data=[0, 1, 2, 3, 4]
+world_rank=2, group=A, local_rank=2, group_size=3, data=[0, 1, 2, 3, 4]
+world_rank=1, group=A, local_rank=1, group_size=3, data=[0, 1, 2, 3, 4]
+world_rank=3, group=B, local_rank=0, group_size=2, data=[30, 31, 32, 33, 34]

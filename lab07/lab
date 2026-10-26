@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+set -euo pipefail
+lab_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+project_dir="$(cd -- "$lab_dir/.." && pwd)"
+source "$project_dir/scripts/env.sh"
+action="${1:-all}"
+
+if (( $# > 1 )); then
+    echo 'Usage: ./lab lab07 [all|object|objects|bcast|bcastarray|build]' >&2
+    exit 2
+fi
+case "$action" in
+    all|object|objects|bcast|bcastarray|build) ;;
+    *) echo 'Usage: ./lab lab07 [all|object|objects|bcast|bcastarray|build]' >&2; exit 2 ;;
+esac
+
+mvn -q -o -f "$project_dir/pom.xml" -Dlab.directory=lab07 compile
+if [[ "$action" == build ]]; then
+    exit 0
+fi
+
+run_program() {
+    printf '\n%s (4 processes)\n' "$1"
+    mpirun --oversubscribe --bind-to none --timeout 60 -np 4 \
+        java -cp "$lab_dir/target/classes:$project_dir/lib/mpi.jar" \
+        "com.mathpar.NAUKMA.stud2026.GR03.yermolovych.$1"
+}
+
+case "$action" in
+    object) run_program TestSendObject ;;
+    objects) run_program TestSendObjects ;;
+    bcast) run_program TestBcastObject ;;
+    bcastarray) run_program TestBcastObjectArray ;;
+    all)
+        run_program TestSendObject
+        run_program TestSendObjects
+        run_program TestBcastObject
+        run_program TestBcastObjectArray
+        ;;
+esac

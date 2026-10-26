@@ -1,0 +1,44 @@
+2026-09-22T22:40:46+03:00
+world_rank=3 -> excluded
+world_rank=5 -> excluded
+world_rank=7 -> excluded
+world_rank=1 -> excluded
+EVEN COMMUNICATOR | world_size=8 | members=[0, 2, 4, 6]
+world_rank=2 -> even_rank=1, even_size=4
+world_rank=4 -> even_rank=2, even_size=4
+world_rank=6 -> even_rank=3, even_size=4
+world_rank=0 -> even_rank=0, even_size=4
+world_rank=3 -> excluded
+world_rank=5 -> excluded
+world_rank=1 -> excluded
+EVEN COMMUNICATOR | world_size=7 | members=[0, 2, 4, 6]
+world_rank=6 -> even_rank=3, even_size=4
+world_rank=4 -> even_rank=2, even_size=4
+world_rank=2 -> even_rank=1, even_size=4
+world_rank=0 -> even_rank=0, even_size=4
+EVEN COMMUNICATOR | world_size=1 | members=[0]
+world_rank=0 -> even_rank=0, even_size=1
+MATRIX COMMUNICATOR | grid=2x2 | periodic=false | reorder=false
+world_rank=3, matrix_rank=3, coords=(1,1), up=1, down=none, left=2, right=none
+world_rank=2, matrix_rank=2, coords=(1,0), up=0, down=none, left=none, right=3
+world_rank=1, matrix_rank=1, coords=(0,1), up=none, down=3, left=0, right=none
+world_rank=0, matrix_rank=0, coords=(0,0), up=none, down=2, left=none, right=1
+MATRIX COMMUNICATOR | grid=3x2 | periodic=false | reorder=false
+world_rank=4, matrix_rank=4, coords=(2,0), up=2, down=none, left=none, right=5
+world_rank=2, matrix_rank=2, coords=(1,0), up=0, down=4, left=none, right=3
+world_rank=5, matrix_rank=5, coords=(2,1), up=3, down=none, left=4, right=none
+world_rank=3, matrix_rank=3, coords=(1,1), up=1, down=5, left=2, right=none
+world_rank=1, matrix_rank=1, coords=(0,1), up=none, down=3, left=0, right=none
+world_rank=0, matrix_rank=0, coords=(0,0), up=none, down=2, left=none, right=1
+MATRIX COMMUNICATOR | grid=3x3 | periodic=false | reorder=false
+world_rank=7, matrix_rank=7, coords=(2,1), up=4, down=none, left=6, right=8
+world_rank=8, matrix_rank=8, coords=(2,2), up=5, down=none, left=7, right=none
+world_rank=5, matrix_rank=5, coords=(1,2), up=2, down=8, left=4, right=none
+world_rank=4, matrix_rank=4, coords=(1,1), up=1, down=7, left=3, right=5
+world_rank=2, matrix_rank=2, coords=(0,2), up=none, down=5, left=1, right=none
+world_rank=6, matrix_rank=6, coords=(2,0), up=3, down=none, left=none, right=7
+world_rank=3, matrix_rank=3, coords=(1,0), up=0, down=6, left=none, right=4
+world_rank=1, matrix_rank=1, coords=(0,1), up=none, down=4, left=0, right=2
+world_rank=0, matrix_rank=0, coords=(0,0), up=none, down=3, left=none, right=1
+MATRIX COMMUNICATOR | grid=1x1 | periodic=false | reorder=false
+world_rank=0, matrix_rank=0, coords=(0,0), up=none, down=none, left=none, right=none

@@ -1,0 +1,30 @@
+Laboratory 11: comparison of laboratories 9 and 10
+Experiment: time
+Processes: 4; grid: 2 x 2
+A: 2048 x 2048; [A | B]: 2048 x 2049
+N = 2048; k = 1024; seed = 2026
+Row communicators: 2; column communicators: 2
+Block: 1024 x 1024; last block column: 1024 x 1025
+Measured runs: 5; warm-up runs per method: 2
+Warm-up round 1/2 completed
+Warm-up round 2/2 completed
+Run  Method             Solve time (s)       Max residual
+  1  DIAGONAL               7.816377 8.255898528375e-06
+  1  ALL_GATHER            14.751560 1.738058585943e-10
+  1  ROW_COLUMN            13.979389 1.738058585943e-10
+  2  ALL_GATHER            14.161407 1.738058585943e-10
+  2  ROW_COLUMN            13.377385 1.738058585943e-10
+  2  DIAGONAL               8.398301 8.255898528375e-06
+  3  ROW_COLUMN            13.738925 1.738058585943e-10
+  3  DIAGONAL               8.199671 8.255898528375e-06
+  3  ALL_GATHER             9.404788 1.738058585943e-10
+  4  DIAGONAL               5.357741 8.255898528375e-06
+  4  ALL_GATHER             7.073632 1.738058585943e-10
+  4  ROW_COLUMN             6.966279 1.738058585943e-10
+  5  ALL_GATHER             6.839083 1.738058585943e-10
+  5  ROW_COLUMN             7.208488 1.738058585943e-10
+  5  DIAGONAL               4.960504 8.255898528375e-06
+Median solve time (s) and maximum residual across runs:
+DIAGONAL         7.816377 s; error = 8.255898528375e-06
+ALL_GATHER       9.404788 s; error = 1.738058585943e-10
+ROW_COLUMN       13.377385 s; error = 1.738058585943e-10

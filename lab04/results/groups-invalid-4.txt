@@ -1,0 +1,19 @@
+Exception in thread "main" Exception in thread "main" java.lang.IllegalArgumentException: Run with at least 5 MPI processes.
+Exception in thread "main" java.lang.IllegalArgumentException: Run with at least 5 MPI processes.
+Exception in thread "main" 	at com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestCreateIntracomm.main(TestCreateIntracomm.java:15)
+java.lang.IllegalArgumentException: Run with at least 5 MPI processes.
+	at com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestCreateIntracomm.main(TestCreateIntracomm.java:15)
+	at com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestCreateIntracomm.main(TestCreateIntracomm.java:15)
+java.lang.IllegalArgumentException: Run with at least 5 MPI processes.
+	at com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestCreateIntracomm.main(TestCreateIntracomm.java:15)
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[54832,1],2]
+  Exit code:    1
+--------------------------------------------------------------------------

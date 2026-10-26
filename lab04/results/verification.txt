@@ -1,0 +1,22 @@
+Verified: 2026-09-22T19:34:46+03:00
+PASS: probe-1: message count, source, tag and received data verified.
+PASS: probe-2: message count, source, tag and received data verified.
+PASS: probe-4: message count, source, tag and received data verified.
+PASS: iprobe-1: message count, source, tag and received data verified.
+PASS: iprobe-2: message count, source, tag and received data verified.
+PASS: iprobe-4: message count, source, tag and received data verified.
+PASS: wait-2: 42 transferred and both requests completed.
+PASS: wait-4: 42 transferred and both requests completed.
+PASS: groups-5: group membership, local ranks, broadcasts and excluded ranks verified.
+PASS: groups-8: group membership, local ranks, broadcasts and excluded ranks verified.
+PASS: blocking-5: both processes completed; length, endpoints and checksum verified; Java checked every received element.
+PASS: blocking-262144: both processes completed; length, endpoints and checksum verified; Java checked every received element.
+PASS: delayed-5: both processes completed; length, endpoints and checksum verified; Java checked every received element.
+PASS: delayed-262144: both processes completed; length, endpoints and checksum verified; Java checked every received element.
+PASS: unsafe-5: both processes completed; length, endpoints and checksum verified; Java checked every received element.
+PASS: unsafe-262144: expected deadlock observed; mpirun stopped it after 5 seconds, exit code 110.
+PASS: nonblocking-5: both processes completed; length, endpoints and checksum verified; Java checked every received element.
+PASS: nonblocking-262144: both processes completed; length, endpoints and checksum verified; Java checked every received element.
+PASS: wait-invalid-1: invalid process count rejected without hanging.
+PASS: groups-invalid-4: invalid process count rejected without hanging.
+PASS: exchange-invalid-3: invalid process count rejected without hanging.

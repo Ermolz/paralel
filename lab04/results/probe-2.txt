@@ -1,0 +1,2 @@
+mode=probe, rank=0, sent_to=1, data=[10, 20, 30, 40, 50]
+mode=probe, rank=1, source=0, tag=1, count=5, data=[10, 20, 30, 40, 50]

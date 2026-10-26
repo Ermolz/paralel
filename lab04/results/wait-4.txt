@@ -1,0 +1,4 @@
+mode=waitFor, rank=3, role=idle
+mode=waitFor, rank=1, received=42, completed=true
+mode=waitFor, rank=0, sent=42, completed=true
+mode=waitFor, rank=2, role=idle

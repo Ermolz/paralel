@@ -1,0 +1,2 @@
+mode=delayed, rank=0, role=sent, count=262144, first=0, last=262143, checksum=34359607296, elapsed_ms=301.310
+mode=delayed, rank=1, role=received, count=262144, first=0, last=262143, checksum=34359607296, elapsed_ms=301.505

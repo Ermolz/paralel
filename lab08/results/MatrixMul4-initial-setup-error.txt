@@ -1,0 +1,60 @@
+[0.004s][warning][perf,memops] Cannot use file /tmp/hsperfdata_ermolz/6574 because it is locked by another process (errno = 11)
+Exception in thread "main" Exception in thread "main" java.lang.ExceptionInInitializerError
+java.lang.ExceptionInInitializerError
+	at com.mathpar.number.Ring.<init>(Ring.java:192)
+Exception in thread "main" 	at com.mathpar.number.Ring.<init>(Ring.java:192)
+	at com.mathpar.number.Ring.<clinit>(Ring.java:536)
+	at com.mathpar.number.Ring.<clinit>(Ring.java:536)
+	at com.mathpar.NAUKMA.stud2026.GR03.yermolovych.MatrixMul4.main(MatrixMul4.java:23)
+	at com.mathpar.NAUKMA.stud2026.GR03.yermolovych.MatrixMul4.main(MatrixMul4.java:23)
+java.lang.ExceptionInInitializerError
+Caused by: java.util.MissingResourceException: Can't find bundle for base name webcluster/main, locale en
+Caused by: java.util.MissingResourceException: Can't find bundle for base name webcluster/main, locale en
+	at java.base/java.util.ResourceBundle.throwMissingResourceException(ResourceBundle.java:2059)
+	at com.mathpar.number.Ring.<init>(Ring.java:192)
+	at java.base/java.util.ResourceBundle.throwMissingResourceException(ResourceBundle.java:2059)
+	at com.mathpar.number.Ring.<clinit>(Ring.java:536)
+	at java.base/java.util.ResourceBundle.getBundleImpl(ResourceBundle.java:1697)
+	at com.mathpar.NAUKMA.stud2026.GR03.yermolovych.MatrixMul4.main(MatrixMul4.java:23)
+	at java.base/java.util.ResourceBundle.getBundleImpl(ResourceBundle.java:1697)
+	at java.base/java.util.ResourceBundle.getBundleImpl(ResourceBundle.java:1600)
+	at java.base/java.util.ResourceBundle.getBundleImpl(ResourceBundle.java:1600)
+Exception in thread "main" Caused by: java.util.MissingResourceException: Can't find bundle for base name webcluster/main, locale en
+	at java.base/java.util.ResourceBundle.getBundleImpl(ResourceBundle.java:1555)
+	at java.base/java.util.ResourceBundle.throwMissingResourceException(ResourceBundle.java:2059)
+	at java.base/java.util.ResourceBundle.getBundleImpl(ResourceBundle.java:1555)
+	at java.base/java.util.ResourceBundle.getBundle(ResourceBundle.java:861)
+java.lang.ExceptionInInitializerError
+	at java.base/java.util.ResourceBundle.getBundle(ResourceBundle.java:861)
+	at java.base/java.util.ResourceBundle.getBundleImpl(ResourceBundle.java:1697)
+	at com.mathpar.number.Ring.<init>(Ring.java:192)
+	at com.mathpar.parallel.webCluster.engine.AlgorithmsConfig.<clinit>(AlgorithmsConfig.java:17)
+	at java.base/java.util.ResourceBundle.getBundleImpl(ResourceBundle.java:1600)
+	at com.mathpar.number.Ring.<clinit>(Ring.java:536)
+	... 3 more
+	at com.mathpar.parallel.webCluster.engine.AlgorithmsConfig.<clinit>(AlgorithmsConfig.java:17)
+	at com.mathpar.NAUKMA.stud2026.GR03.yermolovych.MatrixMul4.main(MatrixMul4.java:23)
+	at java.base/java.util.ResourceBundle.getBundleImpl(ResourceBundle.java:1555)
+	... 3 more
+	at java.base/java.util.ResourceBundle.getBundle(ResourceBundle.java:861)
+Caused by: java.util.MissingResourceException: Can't find bundle for base name webcluster/main, locale en
+	at com.mathpar.parallel.webCluster.engine.AlgorithmsConfig.<clinit>(AlgorithmsConfig.java:17)
+	at java.base/java.util.ResourceBundle.throwMissingResourceException(ResourceBundle.java:2059)
+	... 3 more
+	at java.base/java.util.ResourceBundle.getBundleImpl(ResourceBundle.java:1697)
+	at java.base/java.util.ResourceBundle.getBundleImpl(ResourceBundle.java:1600)
+	at java.base/java.util.ResourceBundle.getBundleImpl(ResourceBundle.java:1555)
+	at java.base/java.util.ResourceBundle.getBundle(ResourceBundle.java:861)
+	at com.mathpar.parallel.webCluster.engine.AlgorithmsConfig.<clinit>(AlgorithmsConfig.java:17)
+	... 3 more
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[51222,1],0]
+  Exit code:    1
+--------------------------------------------------------------------------

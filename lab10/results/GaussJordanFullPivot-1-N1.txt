@@ -1,0 +1,44 @@
+Gauss-Jordan elimination: diagonal and full pivoting
+Processes: 1; grid: 1 x 1
+N = 1; k = 1; seed = 2026
+Row communicators: 1, size: 1
+Column communicators: 1, size: 1
+Block: 1 x 1; last block column: 1 x 2
+Measured runs: 1; warm-up runs per method: 0
+[A | B]:
+[62.24464536586909, 85.07172476822235]
+
+Method: DIAGONAL; run: 1
+Pivot rows: [0]
+Pivot columns: [0]
+Pivot values: [62.24464536586909]
+Pivot ranks: [0]
+X = [1.3667316163210104]
+P = A * X - B = [0.0]
+Error = max(abs(P[i])) = 0.000000000000e+00
+Solve time (s): 0.000182
+
+Method: ALL_GATHER; run: 1
+Pivot rows: [0]
+Pivot columns: [0]
+Pivot values: [62.24464536586909]
+Pivot ranks: [0]
+X = [1.3667316163210104]
+P = A * X - B = [0.0]
+Error = max(abs(P[i])) = 0.000000000000e+00
+Solve time (s): 0.000081
+
+Method: ROW_COLUMN; run: 1
+Pivot rows: [0]
+Pivot columns: [0]
+Pivot values: [62.24464536586909]
+Pivot ranks: [0]
+X = [1.3667316163210104]
+P = A * X - B = [0.0]
+Error = max(abs(P[i])) = 0.000000000000e+00
+Solve time (s): 0.000026
+
+Median solve time (s):
+DIAGONAL: 0.000182
+ALL_GATHER: 0.000081
+ROW_COLUMN: 0.000026

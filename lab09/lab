@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -euo pipefail
+lab_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+project_dir="$(cd -- "$lab_dir/.." && pwd)"
+source "$project_dir/scripts/env.sh"
+
+if (( $# > 3 )); then
+    echo 'Usage: ./lab lab09 [processes] [N] [seed]' >&2
+    exit 2
+fi
+processes="${1:-4}"
+order="${2:-4}"
+seed="${3:-2026}"
+if [[ ! "$processes" =~ ^[1-9][0-9]*$ ]]; then
+    echo 'Process count must be a positive integer.' >&2
+    exit 2
+fi
+
+mvn -q -o -f "$project_dir/pom.xml" -Dlab.directory=lab09 compile
+mpirun --oversubscribe --bind-to none --timeout 120 -np "$processes" \
+    java -cp "$lab_dir/target/classes:$project_dir/lib/mpi.jar" \
+    com.mathpar.NAUKMA.stud2026.GR03.yermolovych.GaussJordan "$order" "$seed"

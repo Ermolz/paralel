@@ -1,0 +1,1 @@
+mode=iSend/iRecv, rank=0, size=1, role=source, data=[9, 0, 7, 0, 9]

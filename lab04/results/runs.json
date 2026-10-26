@@ -1,0 +1,173 @@
+{
+  "verified": "Verified: 2026-09-22T19:34:46+03:00",
+  "runs": [
+    {
+      "label": "probe-1",
+      "command": "mpirun --oversubscribe --bind-to none --timeout 60 -np 1 java -cp lab04/target/classes:lib/mpi.jar com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestProbe",
+      "processes": 1,
+      "exit_code": 0,
+      "seconds": 0.468,
+      "output": "probe-1.txt"
+    },
+    {
+      "label": "probe-2",
+      "command": "mpirun --oversubscribe --bind-to none --timeout 60 -np 2 java -cp lab04/target/classes:lib/mpi.jar com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestProbe",
+      "processes": 2,
+      "exit_code": 0,
+      "seconds": 0.333,
+      "output": "probe-2.txt"
+    },
+    {
+      "label": "probe-4",
+      "command": "mpirun --oversubscribe --bind-to none --timeout 60 -np 4 java -cp lab04/target/classes:lib/mpi.jar com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestProbe",
+      "processes": 4,
+      "exit_code": 0,
+      "seconds": 0.351,
+      "output": "probe-4.txt"
+    },
+    {
+      "label": "iprobe-1",
+      "command": "mpirun --oversubscribe --bind-to none --timeout 60 -np 1 java -cp lab04/target/classes:lib/mpi.jar com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestIProbe",
+      "processes": 1,
+      "exit_code": 0,
+      "seconds": 0.324,
+      "output": "iprobe-1.txt"
+    },
+    {
+      "label": "iprobe-2",
+      "command": "mpirun --oversubscribe --bind-to none --timeout 60 -np 2 java -cp lab04/target/classes:lib/mpi.jar com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestIProbe",
+      "processes": 2,
+      "exit_code": 0,
+      "seconds": 0.357,
+      "output": "iprobe-2.txt"
+    },
+    {
+      "label": "iprobe-4",
+      "command": "mpirun --oversubscribe --bind-to none --timeout 60 -np 4 java -cp lab04/target/classes:lib/mpi.jar com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestIProbe",
+      "processes": 4,
+      "exit_code": 0,
+      "seconds": 0.372,
+      "output": "iprobe-4.txt"
+    },
+    {
+      "label": "wait-2",
+      "command": "mpirun --oversubscribe --bind-to none --timeout 60 -np 2 java -cp lab04/target/classes:lib/mpi.jar com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestWaitFor",
+      "processes": 2,
+      "exit_code": 0,
+      "seconds": 0.296,
+      "output": "wait-2.txt"
+    },
+    {
+      "label": "wait-4",
+      "command": "mpirun --oversubscribe --bind-to none --timeout 60 -np 4 java -cp lab04/target/classes:lib/mpi.jar com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestWaitFor",
+      "processes": 4,
+      "exit_code": 0,
+      "seconds": 0.345,
+      "output": "wait-4.txt"
+    },
+    {
+      "label": "groups-5",
+      "command": "mpirun --oversubscribe --bind-to none --timeout 60 -np 5 java -cp lab04/target/classes:lib/mpi.jar com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestCreateIntracomm",
+      "processes": 5,
+      "exit_code": 0,
+      "seconds": 0.363,
+      "output": "groups-5.txt"
+    },
+    {
+      "label": "groups-8",
+      "command": "mpirun --oversubscribe --bind-to none --timeout 60 -np 8 java -cp lab04/target/classes:lib/mpi.jar com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestCreateIntracomm",
+      "processes": 8,
+      "exit_code": 0,
+      "seconds": 0.405,
+      "output": "groups-8.txt"
+    },
+    {
+      "label": "blocking-5",
+      "command": "mpirun --oversubscribe --bind-to none --timeout 60 -np 2 java -cp lab04/target/classes:lib/mpi.jar com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestBlockingAndNonblocking blocking 5",
+      "processes": 2,
+      "exit_code": 0,
+      "seconds": 0.31,
+      "output": "blocking-5.txt"
+    },
+    {
+      "label": "blocking-262144",
+      "command": "mpirun --oversubscribe --bind-to none --timeout 60 -np 2 java -cp lab04/target/classes:lib/mpi.jar com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestBlockingAndNonblocking blocking 262144",
+      "processes": 2,
+      "exit_code": 0,
+      "seconds": 0.381,
+      "output": "blocking-262144.txt"
+    },
+    {
+      "label": "delayed-5",
+      "command": "mpirun --oversubscribe --bind-to none --timeout 60 -np 2 java -cp lab04/target/classes:lib/mpi.jar com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestBlockingAndNonblocking delayed 5",
+      "processes": 2,
+      "exit_code": 0,
+      "seconds": 0.647,
+      "output": "delayed-5.txt"
+    },
+    {
+      "label": "delayed-262144",
+      "command": "mpirun --oversubscribe --bind-to none --timeout 60 -np 2 java -cp lab04/target/classes:lib/mpi.jar com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestBlockingAndNonblocking delayed 262144",
+      "processes": 2,
+      "exit_code": 0,
+      "seconds": 0.654,
+      "output": "delayed-262144.txt"
+    },
+    {
+      "label": "unsafe-5",
+      "command": "mpirun --oversubscribe --bind-to none --timeout 5 -np 2 java -cp lab04/target/classes:lib/mpi.jar com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestBlockingAndNonblocking unsafe 5",
+      "processes": 2,
+      "exit_code": 0,
+      "seconds": 0.396,
+      "output": "unsafe-5.txt"
+    },
+    {
+      "label": "unsafe-262144",
+      "command": "mpirun --oversubscribe --bind-to none --timeout 5 -np 2 java -cp lab04/target/classes:lib/mpi.jar com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestBlockingAndNonblocking unsafe 262144",
+      "processes": 2,
+      "exit_code": 110,
+      "seconds": 6.424,
+      "output": "unsafe-262144.txt"
+    },
+    {
+      "label": "nonblocking-5",
+      "command": "mpirun --oversubscribe --bind-to none --timeout 60 -np 2 java -cp lab04/target/classes:lib/mpi.jar com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestBlockingAndNonblocking nonblocking 5",
+      "processes": 2,
+      "exit_code": 0,
+      "seconds": 0.301,
+      "output": "nonblocking-5.txt"
+    },
+    {
+      "label": "nonblocking-262144",
+      "command": "mpirun --oversubscribe --bind-to none --timeout 60 -np 2 java -cp lab04/target/classes:lib/mpi.jar com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestBlockingAndNonblocking nonblocking 262144",
+      "processes": 2,
+      "exit_code": 0,
+      "seconds": 0.398,
+      "output": "nonblocking-262144.txt"
+    },
+    {
+      "label": "wait-invalid-1",
+      "command": "mpirun --oversubscribe --bind-to none --timeout 60 -np 1 java -cp lab04/target/classes:lib/mpi.jar com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestWaitFor",
+      "processes": 1,
+      "exit_code": 1,
+      "seconds": 2.394,
+      "output": "wait-invalid-1.txt"
+    },
+    {
+      "label": "groups-invalid-4",
+      "command": "mpirun --oversubscribe --bind-to none --timeout 60 -np 4 java -cp lab04/target/classes:lib/mpi.jar com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestCreateIntracomm",
+      "processes": 4,
+      "exit_code": 1,
+      "seconds": 0.401,
+      "output": "groups-invalid-4.txt"
+    },
+    {
+      "label": "exchange-invalid-3",
+      "command": "mpirun --oversubscribe --bind-to none --timeout 60 -np 3 java -cp lab04/target/classes:lib/mpi.jar com.mathpar.NAUKMA.stud2026.GR03.yermolovych.TestBlockingAndNonblocking",
+      "processes": 3,
+      "exit_code": 1,
+      "seconds": 0.357,
+      "output": "exchange-invalid-3.txt"
+    }
+  ]
+}

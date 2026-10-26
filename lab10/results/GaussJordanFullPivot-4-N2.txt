@@ -1,0 +1,45 @@
+Gauss-Jordan elimination: diagonal and full pivoting
+Processes: 4; grid: 2 x 2
+N = 2; k = 1; seed = 2026
+Row communicators: 2, size: 2
+Column communicators: 2, size: 2
+Block: 1 x 1; last block column: 1 x 2
+Measured runs: 1; warm-up runs per method: 0
+[A | B]:
+[62.24464536586909, 85.07172476822235, 79.24801280620758]
+[53.43092699965216, 84.32501938128095, 15.68130504283984]
+
+Method: DIAGONAL; run: 1
+Pivot rows: [0, 1]
+Pivot columns: [0, 1]
+Pivot values: [62.24464536586909, 11.299282161516444]
+Pivot ranks: [0, 3]
+X = [7.604726136391218, -4.632625819351362]
+P = A * X - B = [-2.842170943040401E-14, -1.5987211554602254E-14]
+Error = max(abs(P[i])) = 2.842170943040e-14
+Solve time (s): 0.000220
+
+Method: ALL_GATHER; run: 1
+Pivot rows: [0, 1]
+Pivot columns: [1, 0]
+Pivot values: [85.07172476822235, -8.267374535413197]
+Pivot ranks: [1, 2]
+X = [7.604726136391221, -4.632625819351364]
+P = A * X - B = [2.842170943040401E-14, 4.085620730620576E-14]
+Error = max(abs(P[i])) = 4.085620730621e-14
+Solve time (s): 0.000138
+
+Method: ROW_COLUMN; run: 1
+Pivot rows: [0, 1]
+Pivot columns: [1, 0]
+Pivot values: [85.07172476822235, -8.267374535413197]
+Pivot ranks: [1, 2]
+X = [7.604726136391221, -4.632625819351364]
+P = A * X - B = [2.842170943040401E-14, 4.085620730620576E-14]
+Error = max(abs(P[i])) = 4.085620730621e-14
+Solve time (s): 0.000165
+
+Median solve time (s):
+DIAGONAL: 0.000220
+ALL_GATHER: 0.000138
+ROW_COLUMN: 0.000165

@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+set -euo pipefail
+lab_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+project_dir="$(cd -- "$lab_dir/.." && pwd)"
+source "$project_dir/scripts/env.sh"
+action="${1:-all}"
+value="${2:-}"
+
+case "$action" in
+    all|probe|iprobe|wait|groups|blocking|delayed|unsafe|nonblocking|build) ;;
+    *) echo 'Usage: ./lab lab04 [all|probe|iprobe|wait|groups|blocking|delayed|unsafe|nonblocking|build] [count]' >&2; exit 2 ;;
+esac
+if [[ -n "$value" && ! "$value" =~ ^[1-9][0-9]*$ ]]; then
+    echo 'Count must be a positive integer.' >&2
+    exit 2
+fi
+
+mvn -q -o -f "$project_dir/pom.xml" -Dlab.directory=lab04 compile
+[[ "$action" != build ]] || exit 0
+
+run_program() {
+    local main_class="$1" processes="$2" limit=60
+    shift 2
+    if [[ "${1:-}" == unsafe ]]; then limit=5; fi
+    mpirun --oversubscribe --bind-to none --timeout "$limit" -np "$processes" \
+        java -cp "$lab_dir/target/classes:$project_dir/lib/mpi.jar" \
+        "com.mathpar.NAUKMA.stud2026.GR03.yermolovych.$main_class" "$@"
+}
+
+case "$action" in
+    probe) run_program TestProbe "${value:-4}" ;;
+    iprobe) run_program TestIProbe "${value:-4}" ;;
+    wait) run_program TestWaitFor "${value:-2}" ;;
+    groups) run_program TestCreateIntracomm "${value:-5}" ;;
+    blocking|delayed|unsafe|nonblocking)
+        run_program TestBlockingAndNonblocking 2 "$action" "${value:-5}"
+        ;;
+    all)
+        run_program TestProbe 4
+        run_program TestIProbe 4
+        run_program TestWaitFor 2
+        run_program TestCreateIntracomm 5
+        run_program TestBlockingAndNonblocking 2 blocking 5
+        run_program TestBlockingAndNonblocking 2 delayed 5
+        run_program TestBlockingAndNonblocking 2 nonblocking 5
+        ;;
+esac
